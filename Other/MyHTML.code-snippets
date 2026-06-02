@@ -1,0 +1,17 @@
+{
+"MyHTML": {
+  "prefix": "MyHTML",
+  "body": [
+    "<html>",
+    "    <head>",
+    "       <meta charset='utf-8'>",
+    "       <title>Tiêu đề trang</title>",
+    "    </head>",
+    "    <body>",
+    "",
+    "    </body>",
+    "</html>"
+  ],
+  "description": ""
+}
+}

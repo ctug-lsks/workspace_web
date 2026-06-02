@@ -1,0 +1,26 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+         <script src="js/mainjs2.js"></script>
+         <script type="text/javascript">
+            function kiemtra(a){
+                kq = isEven(eval(a));
+                if (kq == true) {
+                    alert(a + " là số chẵn");
+                }
+                else {
+                    alert(a + " là số lẻ");
+                }
+            }
+         </script>
+    </head>
+    <body>
+        <h1>Kiểm tra số chẵn hay lẻ</h1>
+        <p>Nhập số:</p>
+        <input type="number" id="soa">
+        <p></p>
+        <input type="button" value="Kiểm tra chẵn lẻ"
+        onclick="kiemtra(soa.value)">
+    </body>
+</html>

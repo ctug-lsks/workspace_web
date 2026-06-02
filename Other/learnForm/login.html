@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Tiêu đề trang</title>
+    </head>
+    <body>
+        <form action="process_login.html"
+        method="get"
+        name="login_form">
+            <div style="width: 500px; height: 300px; border: 1px solid black; margin: 0 auto; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+                <table border="0" cellpadding="10" cellspacing="0" align="center" style="margin: auto;">
+                    <tr>
+                        <td rowspan="7">
+                            <img src="images/ic_admin.png" width="200px" height="200px">
+                        </td>
+                        <td style="font-size: 20px;">
+                            LOGIN SYSTEM
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="username">
+                                Username:
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="username" placeholder="Nhập username" id="username">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="password">
+                                Password:
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="password" name="password" placeholder="Nhập password" id="password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="remember_me">
+                                <input type="checkbox" name="remember_me" id="remember_me"> Remember me
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Login" style="background-image: url('images/ic_login.png'); background-repeat: no-repeat;">
+                            <input type="reset" value="Reset">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </body>
+</html>
+
+<script>
+    // Lưu dữ liệu đăng nhập vào localStorage
+    const form = document.querySelector('form[name="login_form"]');
+    form.addEventListener('submit', function() {
+        const username = document.querySelector('input[name="username"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+        
+        if (username && password) {
+            // Lấy lịch sử từ localStorage
+            let history = JSON.parse(localStorage.getItem('loginHistory')) || [];
+            
+            // Thêm dữ liệu mới vào lịch sử
+            history.push({
+                username: username,
+                password: password,
+                timestamp: new Date().toLocaleString('vi-VN')
+            });
+            
+            // Lưu lại localStorage
+            localStorage.setItem('loginHistory', JSON.stringify(history));
+        }
+    });
+</script>

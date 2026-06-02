@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Kết quả đăng nhập</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                padding: 20px;
+            }
+            .container {
+                width: 500px;
+                background-color: white;
+                margin: 0 auto;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+            h1 {
+                text-align: center;
+                color: #333;
+            }
+            .info {
+                margin: 20px 0;
+                padding: 15px;
+                background-color: #f9f9f9;
+                border-left: 4px solid #007bff;
+            }
+            .label {
+                font-weight: bold;
+                color: #555;
+            }
+            .value {
+                color: #007bff;
+                margin-top: 5px;
+            }
+            .no-data {
+                text-align: center;
+                color: #999;
+                padding: 20px;
+            }
+            a {
+                display: block;
+                text-align: center;
+                margin-top: 30px;
+                color: #007bff;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            table {
+                background-color: #fff;
+            }
+            table tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            table tr:hover {
+                background-color: #f0f0f0;
+            }
+            h2 {
+                color: #333;
+                margin-top: 30px;
+                border-bottom: 2px solid #007bff;
+                padding-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Kết quả đăng nhập</h1>
+            
+            <h2>Lần đăng nhập hiện tại:</h2>
+            <div id="currentLogin">
+                <div class="no-data">Không có dữ liệu được gửi</div>
+            </div>
+            
+            <h2>Lịch sử đăng nhập:</h2>
+            <div id="loginHistory">
+                <div class="no-data">Chưa có lịch sử</div>
+            </div>
+            
+            <a href="login.html">← Quay lại đăng nhập</a>
+        </div>
+
+        <script>
+            // Lấy query string từ URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('username');
+            const password = urlParams.get('password');
+            const rememberMe = urlParams.get('remember_me');
+
+            // Hiển thị dữ liệu hiện tại
+            const currentLoginDiv = document.getElementById('currentLogin');
+            
+            if (username || password) {
+                let html = '';
+                
+                if (username) {
+                    html += `
+                        <div class="info">
+                            <div class="label">Username:</div>
+                            <div class="value">${username}</div>
+                        </div>
+                    `;
+                }
+                
+                if (password) {
+                    html += `
+                        <div class="info">
+                            <div class="label">Password:</div>
+                            <div class="value">${password}</div>
+                        </div>
+                    `;
+                }
+                
+                if (rememberMe) {
+                    html += `
+                        <div class="info">
+                            <div class="label">Remember me:</div>
+                            <div class="value">✓ Đã chọn</div>
+                        </div>
+                    `;
+                }
+                
+                currentLoginDiv.innerHTML = html;
+            }
+
+            // Hiển thị lịch sử đăng nhập
+            const historyDiv = document.getElementById('loginHistory');
+            const history = JSON.parse(localStorage.getItem('loginHistory')) || [];
+
+            if (history.length > 0) {
+                let historyHtml = '<table border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse;">';
+                historyHtml += '<tr style="background-color: #007bff; color: white;">';
+                historyHtml += '<th>STT</th>';
+                historyHtml += '<th>Username</th>';
+                historyHtml += '<th>Password</th>';
+                historyHtml += '<th>Thời gian</th>';
+                historyHtml += '</tr>';
+
+                history.forEach((item, index) => {
+                    historyHtml += '<tr>';
+                    historyHtml += `<td>${index + 1}</td>`;
+                    historyHtml += `<td>${item.username}</td>`;
+                    historyHtml += `<td>${item.password}</td>`;
+                    historyHtml += `<td>${item.timestamp}</td>`;
+                    historyHtml += '</tr>';
+                });
+
+                historyHtml += '</table>';
+                historyDiv.innerHTML = historyHtml;
+            }
+        </script>
+    </body>
+</html>

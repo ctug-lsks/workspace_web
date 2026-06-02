@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>GPA Calculator</title>
+            <script type="text/javascript">
+                function showTable() {
+                    course = my_form.course.value;
+                    if (course == "course1") {
+                        table_course1.style.display = "block";
+                        table_course2.style.display = "none";
+                        table_course3.style.display = "none";
+                    } else if (course == "course2") {
+                        table_course2.style.display = "block";
+                        table_course1.style.display = "none";
+                        table_course3.style.display = "none";
+                    } else if (course == "course3") {
+                        table_course3.style.display = "block";
+                        table_course1.style.display = "none";
+                        table_course2.style.display = "none";
+                    }
+                }
+                function calculateGPA() {
+                    course = my_form.course.value;
+                    if (course == "course1") {
+                        qt = eval(my_form.qt1.value);
+                        gk = eval(my_form.gk1.value);
+                        ck = eval(my_form.ck1.value);
+                        gpa = qt * 0.3 + gk * 0.2 + ck * 0.5;
+                    } else if (course == "course2") {
+                        qt = eval(my_form.qt2.value);
+                        gk = eval(my_form.gk2.value);
+                        ck = eval(my_form.ck2.value);
+                        gpa = qt * 0.25 + gk * 0.25 + ck * 0.3;
+                    } else if (course == "course3") {
+                        qt = eval(my_form.qt3.value);
+                        gk = eval(my_form.gk3.value);
+                        ck = eval(my_form.ck3.value);
+                        t = eval(my_form.t3.value);
+                        gpa = qt * 0.15 + gk * 0.2 + ck * 0.5 + t * 0.15;
+                    }
+                    my_form.result.value = gpa;
+                }
+            </script>
+    </head>
+    <body>
+        <form name="my_form">
+            <h3>Select Course:</h3>
+            <select name="course" onchange="showTable()">
+                <option value="0">Select a course</option>
+                <option value="course1">Course 1</option>
+                <option value="course2">Course 2</option>
+                <option value="course3">Course 3</option>
+            </select>
+            <table id="table_course1" style="display:none">
+                <tr>
+                    <td>QT:</td>
+                    <td><input type="number" name="qt1" required></td>
+                    <td>30%</td>
+                </tr>
+                <tr>
+                    <td>GK:</td>
+                    <td><input type="number" name="gk1" required></td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>CK:</td>
+                    <td><input type="number" name="ck1" required></td>
+                    <td>50%</td>
+                </tr>
+            </table>
+            <table id="table_course2" style="display:none">
+                <tr>
+                    <td>QT:</td>
+                    <td><input type="number" name="qt2" required></td>
+                    <td>25%</td>
+                </tr>
+                <tr>
+                    <td>GK:</td>
+                    <td><input type="number" name="gk2" required></td>
+                    <td>25%</td>
+                </tr>
+                <tr>
+                    <td>CK:</td>
+                    <td><input type="number" name="ck2" required></td>
+                    <td>30%</td>
+                </tr>
+            </table>
+            <table id="table_course3" style="display:none">
+                <tr>
+                    <td>QT:</td>
+                    <td><input type="number" name="qt3" required></td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>GK:</td>
+                    <td><input type="number" name="gk3" required></td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>CK:</td>
+                    <td><input type="number" name="ck3" required></td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>T:</td>
+                    <td><input type="number" name="t3" required></td>
+                    <td>15%</td>
+                </tr>
+            </table>
+            <p></p>
+            <input type="button" value="Calculate GPA" onclick="calculateGPA()">
+            <p></p>
+            <input type="text" name="result" readonly>
+        </form>
+    </body>
+</html>

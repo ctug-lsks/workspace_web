@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Tiêu đề trang</title>
+        <script type="text/javascript">
+            function xulyGiai(a, b, kq) 
+            {
+                //ax+b=0
+                //-> x=-b/a
+                //ketqua.value = eval(b) / eval(a);
+                kq=ptb1(eval(a), eval(b));
+                ketqua.value=kq;
+            }
+            function ptb1(a, b) 
+            {
+                
+                    return -b / a;
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            <table>
+                <tr>
+                    <td colspan="2">Phương trình bậc 1</td>
+                </tr>
+                <tr>
+                    <td>Hệ số a:</td>
+                    <td><input type="text" id="hsa"></td>
+                </tr>
+                <tr>
+                    <td>Hệ số b:</td>
+                    <td><input type="text" id="hsb"></td>
+                </tr>
+                <tr>
+                    <td>Kết quả:</td>
+                    <td><input type="text" id="ketqua"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" value="Giải"
+                        onclick="xulyGiai(hsa.value, hsb.value, ketqua)">
+                        &nbsp;
+                        <input type="reset" value="Thoát">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

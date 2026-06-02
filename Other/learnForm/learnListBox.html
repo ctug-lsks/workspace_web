@@ -1,0 +1,67 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+    </head>
+    <body>
+        <form name="color_form">
+            <h1>Select a Color</h1>
+            <select size="4" onchange="color_form.selected_color.value=this.value; color_form.selected_color.style.backgroundColor=this.value;
+            mydiv.style.backgroundColor=this.value;
+            mytext.innerText=this.value;">
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="yellow">Yellow</option>
+                <option value="orange">Orange</option>
+                <option value="purple">Purple</option>
+                <option value="black">Black</option>
+                <option value="white">White</option>
+                <option value="gray">Gray</option>
+            </select>
+            <p>Your selected color is:</p>
+            <input type="text" name="selected_color" readonly>
+            <div id="mydiv"
+                style="width: 100px; height: 100px; border: 1px solid black;">
+                <p id="mytext"></p>
+            </div>
+        </form>
+        <form name="image_form">
+            <p>Select an image:</p>
+            <select size="4" onchange="image_form.myimage.src=this.value;">
+                <option value="images/obama.jpg">President Obama</option>
+                <option value="images/trump.jpg">President Trump</option>
+                <option value="images/biden.webp">President Biden</option>
+                <option value="images/putin.png">President Putin</option>
+            </select>
+            <img id="myimage" src="" alt="Selected Image" style="width:200px; height:200px; border:1px solid black;">
+        </form>
+        <form name="country_form">
+            <h3>Select a language:</h3>
+            <input type="radio" id="language1" name="language" value="English"
+            onclick="div_english.style.display='block'; div_vietnam.style.display='none'; div_spanish.style.display='none'; div_french.style.display='none';">
+            <label for="language1">English</label><br>
+            <input type="radio" id="language2" name="language" value="Spanish"
+            onclick="div_spanish.style.display='block'; div_vietnam.style.display='none'; div_english.style.display='none'; div_french.style.display='none';">
+            <label for="language2">Spanish</label><br>
+            <input type="radio" id="language3" name="language" value="French"
+            onclick="div_french.style.display='block'; div_vietnam.style.display='none'; div_english.style.display='none'; div_spanish.style.display='none';">
+            <label for="language3">French</label><br>
+            <input type="radio" id="language4" name="language" value="VietNam" checked
+            onclick="div_vietnam.style.display='block'; div_english.style.display='none'; div_spanish.style.display='none'; div_french.style.display='none';">
+            <label for="language4">VietNam</label><br>
+            <div id="div_vietnam" style="display: block;">
+                Xin chào! Bạn đã chọn ngôn ngữ Việt Nam.
+            </div>
+            <div id="div_english" style="display: none;">
+                Hello! You have selected English language.
+            </div>
+            <div id="div_spanish" style="display: none;">
+                ¡Hola! Has seleccionado el idioma español.
+            </div>
+            <div id="div_french" style="display: none;">
+                Bonjour! Vous avez sélectionné la langue française.
+            </div>
+        </form>
+    </body>
+</html>

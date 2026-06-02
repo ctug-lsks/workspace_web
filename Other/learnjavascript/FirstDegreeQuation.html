@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Tiêu đề trang</title>
+        <script type="text/javascript">
+            function calculate() {
+                a=eval(my_form.a.value);
+                b=eval(my_form.b.value);
+                if (a==0) {
+                    if (b==0) {
+                        my_form.result1.value="Infinite solutions";
+                        // result2.innerText="Infinite solutions";
+                        result2.innerHTML="<font color='orange'>Infinite solutions</font>";
+                    } else {
+                        my_form.result1.value="No solution";
+                        result2.innerHTML="<font color='red'>No solution</font>";
+                    }
+                } else {
+                    x=-b/a;
+                    my_form.result1.value=x;
+                    result2.innerHTML="<font color='blue'>x = " + x + "</font>";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h3>First Degree Equation</h3>
+        <form name="my_form">
+            <table>
+                <tr>
+                    <td>Nhập a:</td>
+                    <td><input type="number" name="a"></td>
+                </tr>
+                <tr>
+                    <td>Nhập b:</td>
+                    <td><input type="number" name="b"></td>
+                </tr>
+                <tr>
+                    <td>Result 1:</td>
+                    <td>
+                        <input type="text" name="result1" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Result 2:</td>
+                    <td id="result2">
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="button" value="Calculate"
+                        onclick="calculate()">
+                        |
+                        <input type="reset" value="Clear">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,83 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Bai tap tren lop</title>
+         <script>
+            function calculateGPA()
+            {
+                QT=eval(myForm.QT.value);
+                GK=eval(myForm.GK.value);
+                CK=eval(myForm.CK.value);
+                TN=eval(myForm.TN.value);
+                course=myForm.course.value;
+                
+                if (course=="course1")
+                {
+                    myForm.GPA.value=(QT*0.3 + GK*0.2 + CK*0.5 + TN*0.0).toFixed(2);
+                }
+                else if (course=="course2")
+                {
+                    myForm.GPA.value=(QT*0.25 + GK*0.25 + CK*0.5 + TN*0.0).toFixed(2);
+                }
+                else
+                {
+                    myForm.GPA.value=(QT*0.15 + GK*0.2 + CK*0.5 + TN*0.15).toFixed(2);
+                }
+                
+            }
+         </script>
+    </head>
+    <body>
+        <form name="myForm">
+            <h1> GPA CALCULATION </h1>
+            <table>
+                <tr>
+                    <td> Select courses: </td>
+                <tr>
+                    <select name="course">
+                        <option value="course1">Course 1</option>
+                        <option value="course2">Course 2</option>
+                        <option value="course3">Course 3</option>
+                    </select>
+                </tr>
+                <tr>
+                    <td> QT </td>
+                    <td> 
+                    <input type="number" name="QT" min="0" max="10">
+                    </td>
+                </tr>
+                <tr>
+                    <td> GK </td>
+                    <td>
+                    <input type="number" name="GK" min="0" max="10">
+                    </td>
+                </tr>
+                <tr>
+                    <td> CK </td>
+                    <td>
+                    <input type="number" name="CK" min="0" max="10">
+                    </td>
+                </tr>
+                <tr>
+                    <td> TN </td>
+                    <td>
+                    <input type="number" name="TN" min="0" max="10">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="GPA" onclick="calculateGPA()">
+                    </td>
+                </tr>
+                <tr>
+                    <td> GPA </td>
+                    <td>
+                    <input type="number" name="GPA" min="0" max="10" readonly>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+
+    </body>
+    </html>
