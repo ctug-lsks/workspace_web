@@ -1,0 +1,29 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+         <script>
+            function createListOfValue() {
+                n=myForm.n.value;
+                mydiv.innerHTML = "";
+                for (i=1; i<=n; i++) {
+                    style="color: red;";
+                    if (i%2==0) {
+                        style="color: blue;";
+                    }
+                    line="<p style='"+style+"'>"+i+"</p>";
+                    mydiv.innerHTML += line;
+                }
+            }
+         </script>
+    </head>
+    <body>
+        <form name="myForm">
+            <p>Input N [1-100]: <input type="number" name="n" min="1" max="100"></p>
+            <button type="button" onclick="createListOfValue()">Create List of Value</button>
+        </form>
+        <div id="mydiv">
+
+        </div>
+    </body>
+</html>
