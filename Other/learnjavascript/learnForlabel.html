@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Tiêu đề trang</title>
+        <script>
+            function createListOfProducts() {
+                n=myForm.n.value;
+                tbody_product.innerHTML = "";
+                for (i=1; i<=n; i++) {
+                    product_id = "P"+i;
+                    product_name = "Product Name "+i;
+                    price = i*1000
+                    line = "<tr><td>"+product_id+"</td><td>"
+                        +product_name+"</td><td>"
+                            +price+"</td></tr>";
+                    tbody_product.innerHTML += line;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form name="myForm">
+            <p>Number of Products: <input type="number" name="n" min="1" max="100"></p>
+            <button type="button" onclick="createListOfProducts()">
+                Create List of Products
+            </button>
+        </form>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_product">
+                
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+
+    </head>
+    <body>
+        <h3>List of Sample Values:</h3>
+        <!--vòng for-->
+        <div id="mydiv">
+            
+        </div>
+        <!-- Vòng while-->
+        <table>
+            <colgroup>
+                <col style="width: 30%; background-color: #f0f0f0;">
+                <col style="width: 30%; background-color: #ec0606;">
+                <col style="width: 30%; background-color: yellow;">
+            </colgroup>
+            <tr>
+                <td>
+                    <div id="mydiv1"></div>
+                </td>
+                <td>
+                    <div id="mydiv2"></div>
+                </td>
+                <td>
+                    <div id="mydiv3"></div>
+                </td>
+            </tr>
+        </table>
+        <script>
+            for (i=1; i<=10; i++) {
+                line="<p>"+i+"</p>";
+                mydiv1.innerHTML += line;
+            }
+            var i=1;
+            while (i<=10) {
+                line="<p>"+i+"</p>";
+                mydiv2.innerHTML += line;
+                i++;
+            }
+            var i=1;
+            do {
+                line="<p>"+i+"</p>";
+                mydiv3.innerHTML += line;
+                i++;
+            } while (i<=10);
+         </script>
+    </body>
+</html>

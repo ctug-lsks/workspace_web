@@ -1,0 +1,68 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+         <style>
+                table,td {
+                    width: 100%;
+                    text-align: center;
+                }
+         </style>
+         <script>
+            function MAX() {
+                a=myForm.a.value;
+                b=myForm.b.value;
+                c=myForm.c.value;
+                myForm.result.value=Math.max(a,b,c);
+            }
+            function MIN() {
+                a=myForm.a.value;
+                b=myForm.b.value;
+                c=myForm.c.value;
+                myForm.result.value=Math.min(a,b,c);
+            }
+            function sina() {
+                a=myForm.a.value;
+                myForm.result.value=Math.sin(a);
+            }
+            function cosa() {
+                a=myForm.a.value;
+                myForm.result.value=Math.cos(a);
+            }
+            function amub() {
+                a=myForm.a.value;
+                b=myForm.b.value;
+                myForm.result.value=Math.pow(a,b);
+            }
+         </script>
+    </head>
+    <body>
+        <div style="border: 1px solid black;width: 300px;padding: 10px;">
+            <form name="myForm">
+                <table>
+                    <tr>
+                        <td>a:</td>
+                        <td><input type="number" name="a"></td>
+                    </tr>
+                    <tr>
+                        <td>b:</td>
+                        <td><input type="number" name="b"></td>
+                    </tr>
+                    <tr>
+                        <td>c:</td>
+                        <td><input type="number" name="c"></td>
+                    </tr>
+                    <tr>
+                        <td>Result:</td>
+                        <td><input type="text" name="result" readonly></td>
+                    </tr>
+                </table>
+                <button type="button" onclick="MAX()">MAX</button>
+                <button type="button" onclick="MIN()">MIN</button>
+                <button type="button" onclick="sina()">sin(a)</button>
+                <button type="button" onclick="cosa()">cos(a)</button>
+                <button type="button" onclick="amub()">a^b</button>
+            </form>
+        </div>
+    </body>
+</html>
