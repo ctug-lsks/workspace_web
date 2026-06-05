@@ -16,6 +16,18 @@
                 a=myForm.a.value;
                 b=myForm.b.value;
                 c=myForm.c.value;
+                if (a == 0) {
+                    if (b == 0) {
+                        if (c == 0) {
+                            myForm.result.value = "Infinite solution";
+                        } else {
+                            myForm.result.value = "No solution";
+                        }
+                    } else {
+                        var x = -c/b;
+                        myForm.result.value = "x = " + x;
+                    }
+                }
                 var delta = b*b - 4*a*c;
                 if (delta < 0) {
                     myForm.result.value = "No solution";

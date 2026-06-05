@@ -7,67 +7,86 @@
                 border: 1px solid black;
                 width: 600px;
             }
+            tbody{
+                text-align: center;
+            }
         </style>
     </head>
     <body>
         <div>
-            <table>
-                <thead>
-                    <th>Part Number</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Qty</th>
-                    <th>Item Table</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>C112</td>
-                        <td>Mouse</td>
-                        <td>19.95$</td>
-                        <td>
-                            <input type="text" name="quantity_1" required>
-                        </td>
-                        <td>
-                            <input type="text" name="item_table_1" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>B124</td>
-                        <td>Keyboard US</td>
-                        <td>29.95$</td>
-                        <td>
-                            <input type="text" name="quantity_2" required>
-                        </td>
-                        <td>
-                            <input type="text" name="item_table_2" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>U125</td>
-                        <td>USB KingMax</td>
-                        <td>39.95$</td>
-                        <td>
-                            <input type="text" name="quantity_3" required>
-                        </td>
-                        <td>
-                            <input type="text" name="item_table_3" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5">
-                            <hr size="1" color="black">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" style="text-align: right;">
-                            Total: <input type="text" name="total" required><br/>
-                            <label for="sum">
-                                <input type="submit" name="sum" value="Sum">
-                            </label>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <form name="myForm">
+                <table id="myTable">
+                    <thead>
+                        <th>Part Number</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Item Table</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>C112</td>
+                            <td>Mouse</td>
+                            <td name="price_1">19.95$</td>
+                            <td>
+                                <input type="number" name="quantity_1" required>
+                            </td>
+                            <td>
+                                <input type="text" name="item_table_1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>B124</td>
+                            <td>Keyboard US</td>
+                            <td name="price_2">29.95$</td>
+                            <td>
+                                <input type="number" name="quantity_2" required>
+                            </td>
+                            <td>
+                                <input type="text" name="item_table_2">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>U125</td>
+                            <td>USB KingMax</td>
+                            <td name="price_3">39.95$</td>
+                            <td>
+                                <input type="number" name="quantity_3" required>
+                            </td>
+                            <td>
+                                <input type="text" name="item_table_3">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <hr size="1" color="black">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="text-align: right;">
+                                Total: <input type="text" name="total" onclick="calculateTotal()" readonly>
+                                <p></p>
+                                <label for="sum">
+                                    <input type="submit" name="sum" value="Sum" style="width: 100px; height: 30px; background-color: orange; color: white; border-color:orange">
+                                </label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
         </div>
+        <p id="demo"></p>
+        <p id="demo1"></p>
+        <script>
+            n=myTable.rows.length -3;
+            for (i=1; i<=n; i++) {
+                qty=myForm["quantity_"+i].value;
+                demo.innerText=qty;
+
+                price=myTable.rows[i].cells[2].innerText.replace("$","");
+                demo1.innerText=price;
+                myForm["item_table_"+i].value=qty*price;
+            }
+        </script>
     </body>
 </html>
