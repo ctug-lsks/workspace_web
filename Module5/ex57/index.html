@@ -27,34 +27,34 @@
                         <tr>
                             <td>C112</td>
                             <td>Mouse</td>
-                            <td name="price_1">19.95$</td>
+                            <td>19.95$</td>
                             <td>
-                                <input type="number" name="quantity_1" required>
+                                <input type="number" name="quantity_1"  oninput="calculateItem(1)">
                             </td>
                             <td>
-                                <input type="text" name="item_table_1">
+                                <input type="text" name="item_table_1" readonly>
                             </td>
                         </tr>
                         <tr>
                             <td>B124</td>
                             <td>Keyboard US</td>
-                            <td name="price_2">29.95$</td>
+                            <td>29.95$</td>
                             <td>
-                                <input type="number" name="quantity_2" required>
+                                <input type="number" name="quantity_2" oninput="calculateItem(2)" required>
                             </td>
                             <td>
-                                <input type="text" name="item_table_2">
+                                <input type="text" name="item_table_2" readonly>
                             </td>
                         </tr>
                         <tr>
                             <td>U125</td>
                             <td>USB KingMax</td>
-                            <td name="price_3">39.95$</td>
+                            <td>39.95$</td>
                             <td>
-                                <input type="number" name="quantity_3" required>
+                                <input type="number" name="quantity_3" oninput="calculateItem(3)" required>
                             </td>
                             <td>
-                                <input type="text" name="item_table_3">
+                                <input type="text" name="item_table_3" readonly>
                             </td>
                         </tr>
                         <tr>
@@ -64,10 +64,11 @@
                         </tr>
                         <tr>
                             <td colspan="5" style="text-align: right;">
-                                Total: <input type="text" name="total" onclick="calculateTotal()" readonly>
+                                Total: <input type="text" name="total">
                                 <p></p>
                                 <label for="sum">
-                                    <input type="submit" name="sum" value="Sum" style="width: 100px; height: 30px; background-color: orange; color: white; border-color:orange">
+                                    <input type="button" name="sum" value="Sum"  onclick="calculateTotal()" readonly
+                                    style="width: 100px; height: 30px; background-color: orange; color: white; border-color:orange">
                                 </label>
                             </td>
                         </tr>
@@ -75,17 +76,21 @@
                 </table>
             </form>
         </div>
-        <p id="demo"></p>
-        <p id="demo1"></p>
         <script>
-            n=myTable.rows.length -3;
-            for (i=1; i<=n; i++) {
-                qty=myForm["quantity_"+i].value;
-                demo.innerText=qty;
-
-                price=myTable.rows[i].cells[2].innerText.replace("$","");
-                demo1.innerText=price;
-                myForm["item_table_"+i].value=qty*price;
+            function calculateItem(i){
+                qty=eval(myForm["quantity_"+i].value);
+                price=myTable.rows[i].cells[2].innerHTML.replace("$", "");
+                priceItem=qty*parseFloat(price);
+                myForm["item_table_"+i].value=priceItem.toFixed(2)+"$";                
+            }
+            function calculateTotal(){
+                n=myTable.rows.length;
+                total=0;
+                for(i=1; i<n-2; i++){
+                    item=myForm["item_table_"+i].value.replace("$", "");
+                    total+=parseFloat(item);
+                }
+                myForm["total"].value=total.toFixed(2)+"$";
             }
         </script>
     </body>
