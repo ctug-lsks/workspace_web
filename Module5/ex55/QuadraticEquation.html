@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Tiêu đề trang</title>
+        <style>
+            table, td {
+                text-align: center;
+                width: 300px;
+            }
+            thead {
+                background-color: rgb(185, 255, 185);
+            }
+        </style>
+        <script>
+            function FindSolution() {
+                a=myForm.a.value;
+                b=myForm.b.value;
+                c=myForm.c.value;
+                var delta = b*b - 4*a*c;
+                if (delta < 0) {
+                    myForm.result.value = "No solution";
+                } else if (delta == 0) {
+                    var x = -b/(2*a);
+                    myForm.result.value = "x = " + x;
+                } else {
+                    var x1 = (-b + Math.sqrt(delta)) / (2*a);
+                    var x2 = (-b - Math.sqrt(delta)) / (2*a);
+                    myForm.result.value = "x1=" + x1 + "; x2=" + x2;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form name="myForm">
+            <table border="1">
+                <thead>
+                    <td colspan="2" align="center">The quadratic equation</td>
+                </thead>
+                <tr>
+                    <td>a:</td>
+                    <td><input type="number" name="a"></td>
+                </tr>
+                <tr>
+                    <td>b:</td>
+                    <td><input type="number" name="b"></td>
+                </tr>
+                <tr>
+                    <td>c:</td>
+                    <td><input type="number" name="c"></td>
+                </tr>
+                <tr>
+                    <td>Result:</td>
+                    <td><input type="text" name="result" readonly style="color: red;"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="button" onclick="FindSolution()">Find solution</button>
+                        <button type="reset">Clear</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
