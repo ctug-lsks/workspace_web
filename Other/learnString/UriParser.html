@@ -1,0 +1,58 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+    </head>
+    <body>
+        <form name="myForm">
+            <table>
+                <tr>
+                    <td>Uri:</td>
+                    <td><input type="text" name="uri" size="50"
+                        value="http://example.com:8080/query?id=123&name=test"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="button" onclick="parseUri()">
+                            Parse URI
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Protocol:</td>
+                    <td><input type="text" name="protocol" readonly></td>
+                </tr>
+                <tr>
+                    <td>Host:</td>
+                    <td><input type="text" name="host" readonly></td>
+                </tr>
+                <tr>
+                    <td>Port:</td>
+                    <td><input type="text" name="port" readonly></td>
+                </tr>
+                <tr>
+                    <td>ID:</td>
+                    <td><input type="text" name="id" readonly></td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="name" readonly></td>
+                </tr>
+            </table>
+        </form>
+        <script>
+            function parseUri(){
+                var uri = myForm.uri.value.split("://");
+                myForm.protocol.value = uri[0];
+                var uri2 = uri[1].split(":");
+                myForm.host.value = uri2[0];
+                var uri3 = uri2[1].split("/");
+                myForm.port.value = uri3[0];
+                var uri4 = uri3[1].split("?");
+                var idandname = uri4[1].split("&");
+                myForm.id.value = idandname[0].split("=")[1];
+                myForm.name.value = idandname[1].split("=")[1];
+            }
+        </script>
+    </body>
+</html>

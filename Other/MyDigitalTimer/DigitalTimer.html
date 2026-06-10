@@ -1,0 +1,29 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+    </head>
+    <body>
+        <div id="digital_timer" style="font-size: 30pt; text-align:center">
+
+        </div>
+        <script>
+            function make_digital_timer(){
+                date=new Date();
+                hours=date.getHours();
+                minutes=date.getMinutes();
+                seconds=date.getSeconds();
+                digital_timer.innerHTML=hours+":"+minutes+":"+seconds;
+            }
+            setInterval(make_digital_timer,1000);
+            <!-- setInterval(make_digital_timer,1000) sẽ gọi hàm make_digital_timer() sau mỗi 1000ms (1 giây) để cập nhật đồng hồ kỹ thuật số. -->
+            // function change_color(){
+            //     blue=Math.floor(Math.random()*256);
+            //     red=Math.floor(Math.random()*256);
+            //     purple=Math.floor(Math.random()*256);
+            //     digital_timer.style.color="rgb("+red+","+blue+","+purple+")";
+            // }
+            // setInterval(change_color,1000);
+        </script>
+    </body>
+</html>

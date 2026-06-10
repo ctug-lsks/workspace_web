@@ -1,0 +1,71 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+         <script>
+            function GetInfo(){
+                fullName = document.getElementById("fullName")
+                address = document.getElementById("address")
+                birthday_day = document.getElementById("birthday_day")
+                birthday_month = document.getElementById("birthday_month")
+                birthday_year = document.getElementById("birthday_year")
+                div_info = document.getElementById("div-info")
+                div_info.innerHTML = fullName.value + "<br>" + address.value + "<br>" + birthday_day.value + "/" + birthday_month.value + "/" + birthday_year.value;
+            }   
+        </script>
+    </head>
+    <body>
+        <form name="myForm">
+            <table>
+                <tr>
+                    <td>Full Name</td>
+                    <td><input type="text" name="fullName" id="fullName"></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>
+                        <textarea name="address" id="address" rows="5" cols="20">
+
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Birthday</td>
+                    <td>
+                        <select name="birthday_day" id="birthday_day"></select>
+                        <select name="birthday_month" id="birthday_month"></select>
+                        <select name="birthday_year" id="birthday_year"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="button" onclick="GetInfo()">
+                            Get Information
+                        </button>
+                    </td>
+                </tr>
+            </table>
+            <div id="div-info" style="font-size: 30pt;">
+
+            </div>
+        </form>
+        <script>
+            function create_birthday_control(){
+                birthday_day = document.getElementById("birthday_day");
+                for (i=1; i<=31; i++)
+                {
+                    birthday_day.innerHTML += "<option value='"+i+"'>"+i+"</option>";
+                }
+                birthday_month = document.getElementById("birthday_month");
+                for (i=1; i<=12; i++)                {
+                    birthday_month.innerHTML += "<option value='"+i+"'>"+i+"</option>";
+                }
+                birthday_year = document.getElementById("birthday_year");
+                for (i=1965; i<=2017; i++)                {
+                    birthday_year.innerHTML += "<option value='"+i+"'>"+i+"</option>";
+                }
+            }
+            create_birthday_control();
+        </script>
+    </body>
+</html>

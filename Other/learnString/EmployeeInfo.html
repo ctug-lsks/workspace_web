@@ -1,0 +1,41 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+         <script>
+            data="Emp1;Nguyen Van A;25;nguyenvana@gmail.com"
+         </script>
+    </head>
+    <body>
+        <form name="myForm">
+            <table>
+                <tr>
+                    <td>Employee ID</td>
+                    <td><input type="text" name="empID" readonly></td>
+                </tr>
+                <tr>
+                    <td>Full Name</td>
+                    <td><input type="text" name="fullName" readonly></td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td><input type="text" name="age" readonly></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" name="email" readonly></td>
+                </tr>
+            </table>
+        </form>
+        <script>
+            function loadEmployeeInfo(){
+                var empInfo = data.split(";");
+                myForm.empID.value = empInfo[0];
+                myForm.fullName.value = empInfo[1];
+                myForm.age.value = empInfo[2];
+                myForm.email.value = empInfo[3];
+            }
+            loadEmployeeInfo();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+         <script>
+            function createFullName(){
+                var firstName = myForm.firstName.value;
+                var middleName = myForm.middleName.value;
+                var lastName = myForm.lastName.value;
+                myForm.fullName.value = firstName.concat(" ", middleName, " ", lastName);
+            }
+         </script>
+    </head>
+    <body>
+        <form name="myForm">
+            <p>First Name: <input type="text" name="firstName" onchange="createFullName()"></p>
+            <p>Middle Name: <input type="text" name="middleName" onchange="createFullName()"></p>
+            <p>Last Name: <input type="text" name="lastName" onchange="createFullName()"></p>
+            <p>Full Name: <input type="text" name="fullName" readonly></p>
+        </form>
+    </body>
+</html>

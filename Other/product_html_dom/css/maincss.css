@@ -1,0 +1,18 @@
+table, tr, td, th {
+    border: 1px solid black;
+    border-width: 1px;
+}
+tbody tr:nth-child(even) {
+    background-color: pink;
+}
+tbody tr:nth-child(odd) {
+    background-color: lavender;
+}
+tbody tr:hover {
+    background-color: yellow;
+}
+img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;    
+}
