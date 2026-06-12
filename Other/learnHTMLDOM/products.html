@@ -1,0 +1,70 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+         <style>
+            @import url("css/maincss.css");
+         </style>
+         <script src="js/dataset.js"></script>
+         <script src="js/mainjs.js"></script>
+         <script>
+            function saveProduct()
+            {
+                product_id = document.getElementById("product_id").value;
+                product_name = document.getElementById("product_name").value;
+                // get productbody
+                product_body = document.getElementById("product_body");
+                // create tr element
+                tr = document.createElement("tr");
+                // create 2 td element
+                td_id = document.createElement("td");
+                td_name = document.createElement("td");
+                //assign value for td
+                td_id.innerHTML = product_id;
+                td_name.innerHTML = product_name;
+                // append td(s) into tr
+                tr.appendChild(td_id);
+                tr.appendChild(td_name);
+                // append tr to product_body
+                product_body.appendChild(tr);
+            }
+         </script>
+    </head>
+    <body>
+        <form name="myForm">
+            <table>
+                <tr>
+                    <td>Product ID:</td>
+                    <td><input type="text" name="product_id" id="product_id"></td>
+                </tr>
+                <tr>
+                    <td>Product Name:</td>
+                    <td><input type="text" name="product_name" id="product_name"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type ="button" onclick = "saveProduct()">Save Product</button>
+                    </td>
+            </table>
+        </form>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="product_body">
+
+            </tbody>
+        </table>
+        <!-- Phân trang -->
+        <div id="pagination" style="margin-top: 20px; text-align: center; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
+        </div>
+        <script>
+            product_body = document.getElementById("product_body");
+            loadProducts(products, product_body)
+        </script>
+    </body>
+</html>

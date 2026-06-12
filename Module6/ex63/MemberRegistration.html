@@ -1,0 +1,143 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+        <style>
+            @import url("css/maincss.css");
+        </style>
+         <script src="js/data.js"></script>
+         <script src="js/mainjs.js"></script>
+         <script>
+            function Signup()
+            {
+                // get value of name
+                name = document.getElementById("name").value;
+                // get value of email
+                email = document.getElementById("email").value;
+                // get value of gender
+                gender = document.querySelector('input[name="gender"]:checked').value;
+                // get value of birthday
+                birthday_day = document.getElementById("birthday_day").value;
+                birthday_month = document.getElementById("birthday_month").value;
+                birthday_year = document.getElementById("birthday_year").value;
+                if (birthday_day <10)
+                    birthday_day = "0" + birthday_day;
+                if (birthday_month <10)
+                    birthday_month = "0" + birthday_month;
+                birthday = birthday_day + "/" + birthday_month + "/" + birthday_year;
+                // get value of favorite
+                favorite_elements = document.querySelectorAll('input[name="favorite"]:checked');
+                favorite = [];
+                for (i=0; i<favorite_elements.length; i++)
+                    favorite.push(favorite_elements[i].value);
+                // get value of color
+                color_element = document.querySelector('input[name="color"]:checked');
+                color = color_element ? color_element.value : "";
+                //get table body
+                table_body = document.getElementById("table_body");
+                // create tr element
+                tr = document.createElement("tr");
+                // create td element
+                td_name = document.createElement("td");
+                td_email = document.createElement("td");
+                td_gender = document.createElement("td");
+                td_birthday = document.createElement("td");
+                td_favorite = document.createElement("td");
+                td_color = document.createElement("td");
+                // assign value for td
+                td_name.innerHTML = name;
+                td_email.innerHTML = email;
+                td_gender.innerHTML = gender;
+                td_birthday.innerHTML = birthday;
+                td_favorite.innerHTML = favorite.join(", ");
+                td_color.innerHTML = color;
+                // append td elements to tr element
+                tr.appendChild(td_name);
+                tr.appendChild(td_email);
+                tr.appendChild(td_gender);
+                tr.appendChild(td_birthday);
+                tr.appendChild(td_favorite);
+                tr.appendChild(td_color);
+                // append tr element to table body
+                table_body.appendChild(tr);
+            }
+         </script>
+    </head>
+    <body>
+        <div>
+            <h2>Member Registration</h2>
+            <hr/>
+            <form name="myForm">
+                <table>
+                    <tr>
+                        <td>Name(*)</td>
+                        <td><input type="text" name="name" id="name" required></td>
+                    </tr>
+                    <tr>
+                        <td>Birthday(*)</td>
+                        <td>
+                            Day:
+                            <select name = "birthday_day" id="birthday_day" required></select>
+                            Month:
+                            <select name = "birthday_month" id="birthday_month" required></select>
+                            Year:
+                            <select name = "birthday_year" id="birthday_year" required></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gender(*)</td>
+                        <td>
+                            <label><input type="radio" name="gender" value="man" required> Man</label>
+                            <label><input type="radio" name="gender" value="woman" required> Woman</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email(*)</td>
+                        <td><input type="email" name="email" id="email" required></td>
+                    </tr>
+                </table>
+                <p>
+                    Your favorite: </br>
+                    <label><input type="checkbox" name="favorite" value="Shopping"> Shopping</label> </br>
+                    <label><input type="checkbox" name="favorite" value="Tourism"> Tourism</label> </br>
+                    <label><input type="checkbox" name="favorite" value="Chat"> Chat</label> </br>
+                    <label><input type="checkbox" name="favorite" value="Readabook"> Read a book</label> </br>
+                    <label><input type="checkbox" name="favorite" value="Listeningtomusic"> Listening to music</label> </br>
+                    Your favourite color: </br>
+                    <label><input type="radio" name="color" value="blue"> <span>Blue</span></label> </br>
+                    <label><input type="radio" name="color" value="red"> <span>Red</span></label> </br>
+                    <label><input type="radio" name="color" value="yellow"> <span>Yellow</span></label> </br>
+                    <label><input type="radio" name="color" value="green"> <span>Green</span></label> </br>
+                    <label><input type="radio" name="color" value="violet"> <span>Violet</span></label> </br>
+                </p>
+                <button type="button" onclick="Signup()">Sign Up</button>
+                <button type="reset">Reset</button>
+                <p></p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Birthday</th>
+                            <th>Hobbies</th>
+                            <th>Colors</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table_body">
+
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <script>
+            birthday_day = document.getElementById("birthday_day");
+            birthday_month = document.getElementById("birthday_month");
+            birthday_year = document.getElementById("birthday_year");
+            create_birthday_control(birthday_day, birthday_month, birthday_year);
+            table_body = document.getElementById("table_body");
+            loadMembers(members, table_body);
+            applyColorToRadio('color');
+        </script>
+    </body>
+</html>

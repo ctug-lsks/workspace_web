@@ -1,0 +1,18 @@
+
+tbody tr:nth-child(2n){
+    background-color: lavender;
+}
+tbody tr:nth-child(2n+1){
+    background-color: pink;
+}
+tbody tr:hover
+{
+    background-color: yellow
+}
+td img{
+    cursor: pointer;
+}
+img{
+    width: 20px;
+    height: 20px;
+}
