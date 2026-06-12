@@ -47,3 +47,13 @@ function loadMembers(members, table_body){
         table_body.appendChild(tr);
     }
 }
+
+function applyColorToRadio(radioName) {
+    var radios=document.getElementsByName(radioName);
+    for (i = 0; i < radios.length; i++) {
+        var radio=radios[i];
+        var color=radio.value.toLowerCase(); 
+        var span=radio.nextElementSibling;
+        span.style.backgroundColor=color;
+    }
+}
