@@ -1,33 +1,3 @@
-// Function áp dụng màu nền vĩnh viễn cho tất cả radio button dựa trên text
-function applyColorToRadio(colorInputName) {
-    const colorMap = {
-        'Blue': '#0066cc',
-        'Red': '#cc0000',
-        'Yellow': '#ffff00',
-        'Green': '#00aa00',
-        'Violet': '#aa00ff'
-    };
-    
-    // Lấy tất cả radio button của group đó
-    const allRadios = document.querySelectorAll(`input[name="${colorInputName}"]`);
-    
-    allRadios.forEach(radio => {
-        // Lấy span chứa text
-        const span = radio.nextElementSibling;
-        
-        if (span && span.tagName === 'SPAN') {
-            // Lấy text từ span
-            const colorText = span.innerText.trim();
-            const bgColor = colorMap[colorText] || colorText;
-            
-            // Apply background color chỉ cho span (text)
-            span.style.backgroundColor = bgColor;
-            span.style.color = 'black';
-            span.style.padding = '2px 4px';
-        }
-    });
-}
-
 function create_birthday_control(birthday_day, birthday_month, birthday_year){
     for (i=1; i<=31; i++)
     {

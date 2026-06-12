@@ -1,0 +1,61 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+         <style>
+            @import url("css/maincss.css");
+        </style>
+    </head>
+    <body>
+        <div>
+            <form name="myForm">
+                <table>
+                    <tr>
+                        <td>
+                            <button type="button" id="add_node">Add Node</button>
+                        </td>
+                        <td>Content</td>
+                        <td>
+                            <input type="text" id="add_content" required>
+                        </td>
+                        <td>Position</td>
+                        <td>
+                            <input type="number" id="add_pos" min="1" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" id="remove_node">Remove Node</button>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>Position</td>
+                        <td>
+                            <input type="number" id="remove_pos" min="1" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" id="modify_node">Modify Node</button>
+                        </td>
+                        <td>New Content</td>
+                        <td>
+                            <input type="text" id="mod_content" required>
+                        </td>
+                        <td>Position</td>
+                        <td>
+                            <input type="number" id="mod_pos" min="1" required>
+                        </td>
+                    </tr>
+                </table>
+                <p>Web Node</p>
+                <ul id="node_list">
+                    <li>Data base</li>
+                    <li>Web1</li>
+                    <li>Web2</li>
+                </ul>
+            </form>
+        </div>
+        <script src="js/mainjs.js"></script>
+    </body>
+</html>
