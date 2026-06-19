@@ -1,0 +1,42 @@
+    <html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Tiêu đề trang</title>
+        <style>
+            @import url("css/maincss.css");
+        </style>
+        <script src="js/mainjs.js"></script>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th colspan="2">
+                        <select id="select_department" onchange="filter_employees_by_department()">
+                            <option value="">All</option>
+                            <option value="Architect" id="Architect">Architect</option>
+                            <option value="Engineer" id="Engineer">Engineer</option>
+                            <option value="Teacher" id="Teacher">Teacher</option>
+                        </select>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody id="body_employee">
+
+            </tbody>
+        </table>
+        <script>
+            body_employee=document.getElementById("body_employee");
+            department=document.getElementById("select_department");
+            //gọi ajax sau:
+            dataset_path="dataset/employee.xml";
+            load_employees_from_external_xml (dataset_path, body_employee, department);
+        </script>
+    </body>
+</html>

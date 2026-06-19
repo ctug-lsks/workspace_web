@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Tiêu đề trang</title>
+        <style>
+            @import url("css/maincss.css");
+        </style>
+        <script src="js/mainjs.js"></script>
+    </head>
+    <body>
+        <table name="student_table" id="student_table">
+            <thead>
+                <tr>
+                    <th colspan="4" class="yellowbg">List of Students</th>
+                </tr>
+                <tr class="greenbg">
+                    <th onclick="sortTable(0)">Student ID</th>
+                    <th onclick="sortTable(1)">Student Name</th>
+                    <th onclick="sortTable(2)">Birthday</th>
+                    <th onclick="sortTable(3)">Gender</th>
+                </tr>
+            </thead>
+            <tbody id="bodystudent">
+
+            </tbody>
+        </table>
+        <script>
+            
+            bodystudent=document.getElementById("bodystudent");
+            //gọi ajax sau:
+            dataset_path="dataset/students.xml";
+            load_students_from_external_xml (dataset_path, bodystudent);
+        </script>
+    </body>
+</html>

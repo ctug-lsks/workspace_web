@@ -1,0 +1,32 @@
+    <html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Tiêu đề trang</title>
+        <style>
+            @import url("css/maincss.css");
+        </style>
+        <script src="js/mainjs.js"></script>
+    </head>
+    <body>
+        <button onclick="get_cd_catalog()">Get my CD collection</button>
+        <p></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Artist</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody id="bodycd">
+
+            </tbody>
+        </table>
+        <script>
+            
+            bodycd=document.getElementById("bodycd");
+            //gọi ajax sau:
+            dataset_path="dataset/cd_catalog.xml";
+            load_cds_from_external_xml (dataset_path, bodycd);
+        </script>
+    </body>
+</html>
