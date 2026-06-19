@@ -1,0 +1,22 @@
+{
+  "customers": [
+    {
+      "id": "1",
+      "name": "Teo",
+      "age": "40",
+      "city": "HCM"
+    },
+    {
+      "id": "2",
+      "name": "Ty",
+      "age": "30",
+      "city": "ĐN"
+    },
+    {
+      "id": "3",
+      "name": "Lan",
+      "age": "25",
+      "city": "HN"
+    }
+  ]
+}

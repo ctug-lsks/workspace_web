@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Tiêu đề trang</title>
+        <script src="dataset/customers.js"></script>
+        <script src="js/mainjs.js"></script>
+        <style>
+            @import url("css/maincss.css");
+        </style>
+    </head>
+    <body>
+        <div id="divdataset">
+
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>Age</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody id="bodycustomer">
+
+            </tbody>
+        </table>
+        <script>
+            divdataset=document.getElementById("divdataset");
+            divdataset.innerHTML=customers;
+            
+            bodycustomer=document.getElementById("bodycustomer");
+            load_customers_from_xml(customers, bodycustomer);
+        </script>
+    </body>
+</html>

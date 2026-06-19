@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Tiki Project</title>
+        <style>
+            @import url("css/maincss.css");
+        </style>
+        <script src="js/mainjs.js"></script>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category_Ref</th>
+                    <th>Category_Name</th>
+                    <th>Category_Img</th>
+                </tr>
+            </thead>
+            <tbody id="bodycategory">
+
+            </tbody>
+        </table>
+        <script>
+            
+            bodycategory=document.getElementById("bodycategory");
+            //gọi ajax sau:
+            dataset_path="dataset/categories.xml";
+            load_categories_from_external_xml(dataset_path, bodycategory);
+        </script>
+    </body>
+</html>

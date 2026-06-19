@@ -1,0 +1,20 @@
+<customers>
+    <customer>
+        <id>1</id>
+        <name>Teo</name>
+        <age>40</age>
+        <city>HCM</city>
+    </customer>
+    <customer>
+        <id>2</id>
+        <name>Ty</name>
+        <age>30</age>
+        <city>ĐN</city>
+    </customer>
+    <customer>
+        <id>3</id>
+        <name>Lan</name>
+        <age>25</age>
+        <city>HN</city>
+    </customer>
+</customers> 
