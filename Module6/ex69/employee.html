@@ -6,6 +6,9 @@
             @import url("css/maincss.css");
         </style>
         <script src="js/mainjs.js"></script>
+        <script>
+            dataset_path="dataset/employee.xml";
+        </script>
     </head>
     <body>
         <table>
@@ -13,15 +16,12 @@
                 <tr>
                     <th>Title</th>
                     <th colspan="2">
-                        <select id="select_department" onchange="filter_employees_by_department()">
-                            <option value="">All</option>
-                            <option value="Architect" id="Architect">Architect</option>
-                            <option value="Engineer" id="Engineer">Engineer</option>
-                            <option value="Teacher" id="Teacher">Teacher</option>
+                        <select id="select_department" onchange="load_employees_from_external_xml(dataset_path, body_employee)">
+                            <option>All</option>
                         </select>
                     </th>
                 </tr>
-                <tr>
+                <tr class="header_employee">
                     <th>Employee ID</th>
                     <th>Employee Name</th>
                     <th>Phone</th>

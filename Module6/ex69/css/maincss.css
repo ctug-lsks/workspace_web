@@ -1,5 +1,14 @@
-table,th,td {
-    border: 1px;
-    border-color: solid black;
+table, th, td {
+    border: 1px solid black;
     border-collapse: collapse;
+    padding: 5px;
+}
+tr.header_employee {
+    background-color: rgb(42, 118, 61);
+    color: white;
+    text-align: left;
+}
+select {
+    width: 100%;
+    border: none;
 }
