@@ -15,6 +15,9 @@ tr.greenbg{
 th.yellowbg{
     background-color: rgb(255, 224, 26);
 }
-tbody tr:hover{
+tr.student-row:hover{
     background-color: yellow;
+}
+tr.student-row{
+    cursor: pointer;
 }

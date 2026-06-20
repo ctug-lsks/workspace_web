@@ -1,9 +1,12 @@
-table th{
-    background-color: rgb(175, 253, 209);
-    font-style: normal;
-    text-align: center;
+table, th, td{
+    border: 1px solid #000;
+    border-collapse: collapse;
+    font-family: "Times New Roman", serif;
+    padding: 5px;
+    width: 400px;
 }
-table td{
-    border: 1px;
-    border-style: solid;
+th{
+    background-color: #e6f0d8;
+    text-align: center;
+    font-weight: normal;
 }

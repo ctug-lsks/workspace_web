@@ -1,147 +1,118 @@
+var students = [];
+var sortDirections = {};
+
 function load_students_from_external_xml(dataset_path, body_student) {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET",dataset_path,true);
+    xhr.open("GET", dataset_path, true);
     xhr.send();
-    xhr.onreadystatechange=function()
-    {
-        if (xhr.readyState==4 && xhr.status==200)
-        {
-            //handling when loading data successfully
-            //XML DOM & HTML DOM sẽ xử lý, AJAX kết thúc nhiệm kỳ
-            var xmlDoc = xhr.responseXML;
-            // responseXML not responseText because the data is in XML format, not JSON format
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(xhr.responseText, "text/xml");
             render_xml2html(xmlDoc, body_student);
         }
-        else
-        {
-            //handling when data can't be loaded
-        }
-    }
+    };
+}
 
+function getNodeText(parent, tagName) {
+    var tag = parent.getElementsByTagName(tagName)[0];
+    return tag.childNodes[0].nodeValue;
 }
 function render_xml2html(xmlDoc, body_student) {
-    //load an array of student XML tags
+    students = [];
+    
     var student_tags = xmlDoc.getElementsByTagName("student");
-    for (i = 0; i < student_tags.length; i++) {
-        //get tag at i position
-        student_tag = student_tags[i];
-        id_tag = student_tag.getElementsByTagName("id")[0];
-        name_tag = student_tag.getElementsByTagName("name")[0];
-        birthday_tag = student_tag.getElementsByTagName("birthday")[0];
-        gender_tag = student_tag.getElementsByTagName("gender")[0];
-        student_id = id_tag.childNodes[0].nodeValue;
-        student_name = name_tag.childNodes[0].nodeValue;
-        student_birthday = birthday_tag.childNodes[0].nodeValue;
-        student_gender = gender_tag.childNodes[0].nodeValue;
 
-        tr = document.createElement("tr");
-        td_id = document.createElement("td");
-        td_name = document.createElement("td");
-        td_birthday = document.createElement("td");
-        td_gender = document.createElement("td");
+    for (var i = 0; i < student_tags.length; i++) {
+        students[i]={
+            id: getNodeText(student_tags[i], "id"),
+            name: getNodeText(student_tags[i], "name"),
+            birthday: getNodeText(student_tags[i], "birthday"),
+            gender: getNodeText(student_tags[i], "gender")
+        };
+    }
+    renderStudents(body_student);
+    // showStudentDetail(students[0]);
+}
 
-        td_id.innerHTML = student_id;
-        td_name.innerHTML = student_name;
-        td_birthday.innerHTML = student_birthday;
-        td_gender.innerHTML = student_gender;
+function renderStudents(body_student) {
+    body_student.innerHTML = "";
+
+    for (var i = 0; i < students.length; i++) {
+        var student = students[i];
+        var tr = document.createElement("tr");
+        tr.className = "student-row";
+        tr.dataset.index = String(i);
+
+        var td_id = document.createElement("td");
+        var td_name = document.createElement("td");
+        var td_birthday = document.createElement("td");
+        var td_gender = document.createElement("td");
+
+        td_id.innerHTML = student.id;
+        td_name.innerHTML = student.name;
+        td_birthday.innerHTML = student.birthday;
+        td_gender.innerHTML = student.gender;
 
         tr.appendChild(td_id);
         tr.appendChild(td_name);
         tr.appendChild(td_birthday);
         tr.appendChild(td_gender);
 
+        showStudentDetail(tr, student);
+        
         body_student.appendChild(tr);
     }
 }
 
-var sortDirections = [];
-
-function sortTable(columnIndex) {
-    var table = document.getElementById("student_table");
-    if (!table) return;
-    var tbody = table.tBodies[0];
-    if (!tbody) return;
-
-    // Copy rows into an array for sorting
-    var rows = [];
-    var i = 0;
-    while (i < tbody.rows.length) {
-        rows.push(tbody.rows[i]);
-        i = i + 1;
-    }
-
-    // Toggle direction: if undefined assume ascending, then toggle
-    var dir = sortDirections[columnIndex];
-    if (!dir) dir = 'asc';
-    else if (dir === 'asc') dir = 'desc';
-    else dir = 'asc';
-    sortDirections[columnIndex] = dir;
-    var ascending = (dir === 'asc');
-
-    function getCellValue(row, idx) {
-        if (row.cells[idx]) return row.cells[idx].innerText.trim();
-        return '';
-    }
-
-    function parseDateDMY(text) {
-        var parts = text.split('/');
-        if (parts.length !== 3) return null;
-        var day = parseInt(parts[0], 10);
-        var month = parseInt(parts[1], 10) - 1;
-        var year = parseInt(parts[2], 10);
-        if (isNaN(day) || isNaN(month) || isNaN(year)) return null;
-        return new Date(year, month, day).getTime();
-    }
-
-    function isNumeric(s) {
-        if (s === '') return false;
-        return !isNaN(s);
-    }
-
-    // Simple bubble sort for clarity (uses for and while as requested)
-    var n = rows.length;
-    var swapped = true;
-    while (swapped) {
-        swapped = false;
-        for (var j = 0; j < n - 1; j++) {
-            var a = getCellValue(rows[j], columnIndex);
-            var b = getCellValue(rows[j + 1], columnIndex);
-            var compare = 0;
-
-            // Try date compare (DD/MM/YYYY)
-            var da = parseDateDMY(a);
-            var db = parseDateDMY(b);
-            if (da !== null && db !== null) {
-                if (da < db) compare = -1; else if (da > db) compare = 1; else compare = 0;
-            } else if (isNumeric(a) && isNumeric(b)) {
-                // Numeric compare
-                var na = parseFloat(a);
-                var nb = parseFloat(b);
-                if (na < nb) compare = -1; else if (na > nb) compare = 1; else compare = 0;
-            } else {
-                // String compare case-insensitive
-                var sa = a.toLowerCase();
-                var sb = b.toLowerCase();
-                if (sa < sb) compare = -1; else if (sa > sb) compare = 1; else compare = 0;
-            }
-
-            if (!ascending) compare = -compare;
-
-            if (compare > 0) {
-                // swap in array
-                var tmp = rows[j];
-                rows[j] = rows[j + 1];
-                rows[j + 1] = tmp;
-                swapped = true;
-            }
-        }
-        // optional small optimization
-        n = n - 1;
-    }
-
-    // Append rows back to tbody in new order
-    for (var k = 0; k < rows.length; k++) {
-        tbody.appendChild(rows[k]);
-    }
+function showStudentDetail(row, student) {
+    row.addEventListener("click", function () {
+        if (!student) return;
+        var detailUrl = "student_detail.html"
+            + "?id=" + encodeURIComponent(student.id)
+            + "&name=" + encodeURIComponent(student.name)
+            + "&birthday=" + encodeURIComponent(student.birthday)
+            + "&gender=" + encodeURIComponent(student.gender);
+        window.location.href = detailUrl;
+    });
 }
 
+function normalizeForSort(value, columnIndex) {
+    console.log(columnIndex);
+    if (columnIndex === 0) {
+        return parseInt(value, 10);
+    }
+
+    if (columnIndex === 2) {
+        var parts = value.split("/");
+        //Cách làm dùng date: return new Date(parts[2], parseInt(parts[1], 10) - 1, parts[0])//.getTime();
+        return parseInt(parts[2], 10) * 10000 + parseInt(parts[1], 10) * 100 + parseInt(parts[0], 10);
+    }
+
+    return value.toLowerCase();
+}
+
+function sortTable(columnIndex) {
+    var direction = sortDirections[columnIndex] === "asc" ? "desc" : "asc";
+    console.log("Sorting by column " + columnIndex + " in " + direction + " order");
+    sortDirections[columnIndex] = direction;
+
+    students.sort(function (a, b) {
+        var valueA = normalizeForSort(getStudentValue(a, columnIndex), columnIndex);
+        var valueB = normalizeForSort(getStudentValue(b, columnIndex), columnIndex);
+        console.log("Comparing" + valueA + "and" + valueB + ": " + (valueA < valueB ? "A < B" : "A >= B")    );
+        if (valueA < valueB) return direction === "asc" ? -1 : 1;
+        if (valueA > valueB) return direction === "asc" ? 1 : -1;
+        return 0;
+    });
+
+    var body_student = document.getElementById("bodystudent");
+    renderStudents(body_student);
+}
+
+function getStudentValue(student, columnIndex) {
+    if (columnIndex === 0) return student.id;
+    if (columnIndex === 1) return student.name;
+    if (columnIndex === 2) return student.birthday;
+    return student.gender;
+}

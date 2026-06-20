@@ -5,6 +5,21 @@
         <style>
             @import url("css/detailcss.css");
         </style>
+        <script>
+            function getQueryParam(name) {
+                var params = new URLSearchParams(window.location.search);
+                return params.get(name) || "";
+            }
+
+            function fillStudentDetailPage() {
+                document.getElementById("student_id").innerHTML = getQueryParam("id");
+                document.getElementById("student_name").innerHTML = getQueryParam("name");
+                document.getElementById("student_birthday").innerHTML = getQueryParam("birthday");
+                document.getElementById("student_gender").innerHTML = getQueryParam("gender");
+            }
+
+            window.onload = fillStudentDetailPage;
+        </script>
     </head>
     <body>
         <table>
