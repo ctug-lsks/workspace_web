@@ -1,0 +1,65 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+         <script>
+            var product=
+            {
+                "ProductID": "p1",
+                "ProductName": "Coca",
+                "Quantity": 15,
+                "Price": 20,
+                Payment: function()
+                {
+                    return this.Quantity*this.Price;
+                }
+            }
+         </script>
+    </head>
+    <body onload="load_product()">
+        <table border="1">
+            <tr>
+                <td>Product ID:</td>
+                <td id="td_product_id"></td>
+            </tr>
+            <tr>
+                <td>Product Name:</td>
+                <td id="td_product_name"></td>
+            </tr>
+            <tr>
+                <td>Quantity:</td>
+                <td id="td_quantity"></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td id="td_price"></td>
+            </tr>
+            <tr>
+                <td>Payment:</td>
+                <td id="td_payment"></td>
+            </tr>
+        </table>
+        <script>
+            function load_product()
+            {
+                td_product_id=document.getElementById("td_product_id");
+                td_product_name=document.getElementById("td_product_name");
+                td_quantity=document.getElementById("td_quantity");
+                td_price=document.getElementById("td_price");
+                td_payment=document.getElementById("td_payment");
+
+                // td_product_id.innerHTML=product.ProductID;
+                td_product_name.innerHTML=product.ProductName;
+                td_quantity.innerHTML=product.Quantity;
+                td_price.innerHTML=product.Price;
+                td_payment.innerHTML=product.Payment();
+
+                td_product_id.innerHTML=product["ProductID"];
+                // cách này sử dụng khi tên thuộc tính có khoảng trắng hoặc ký tự đặc biệt,
+                // hoặc khi tên thuộc tính được lưu trong một biến.
+
+                console.log(product);
+            }
+        </script>
+    </body>
+</html>

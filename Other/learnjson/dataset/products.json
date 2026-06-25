@@ -1,0 +1,44 @@
+[
+    {
+        "CateID":"C1",
+        "CateName":"Nước ngọt",
+        "products":[
+            {
+                "ProductID": "p1",
+                "ProductName": "Coca",
+                "Quantity": 15,
+                "Price": 20
+            },
+            {
+                "ProductID": "p2",
+                "ProductName": "Pepsi",
+                "Quantity": 25,
+                "Price": 17
+            }
+        ]
+    },
+    {
+        "CateID":"C2",
+        "CateName":"Bia các loại",
+        "products":[
+            {
+                "ProductID": "p3",
+                "ProductName": "Heneken",
+                "Quantity": 80,
+                "Price": 70
+            },
+            {
+                "ProductID": "p4",
+                "ProductName": "Beer 333",
+                "Quantity": 20,
+                "Price": 45
+            },
+            {
+                "ProductID": "p5",
+                "ProductName": "Shaporo",
+                "Quantity": 17,
+                "Price": 21
+            }
+        ]
+    }
+]

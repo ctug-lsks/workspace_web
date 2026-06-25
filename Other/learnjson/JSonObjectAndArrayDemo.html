@@ -1,0 +1,105 @@
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Tiêu đề trang</title>
+         <script>
+            var products = [
+                {
+                    "CateID":"C1",
+                    "CateName":"Nước ngọt",
+                    "products":[
+                        {
+                            "ProductID": "p1",
+                            "ProductName": "Coca",
+                            "Quantity": 15,
+                            "Price": 20
+                        },
+                        {
+                            "ProductID": "p2",
+                            "ProductName": "Pepsi",
+                            "Quantity": 25,
+                            "Price": 17
+                        }
+                    ]
+                },
+                {
+                    "CateID":"C2",
+                    "CateName":"Bia các loại",
+                    "products":[
+                        {
+                            "ProductID": "p3",
+                            "ProductName": "Heneken",
+                            "Quantity": 80,
+                            "Price": 70
+                        },
+                        {
+                            "ProductID": "p4",
+                            "ProductName": "Beer 333",
+                            "Quantity": 20,
+                            "Price": 45
+                        },
+                        {
+                            "ProductID": "p5",
+                            "ProductName": "Shaporo",
+                            "Quantity": 17,
+                            "Price": 21
+                        }
+                    ]
+                }
+            ]
+         </script>
+    </head>
+    <body onload="load_products()">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="product_body">
+                
+            </tbody>
+        </table>
+        <script>
+            function load_products()
+            {
+                product_body=document.getElementById("product_body");
+                for (i=0; i<products.length; i++) //DANH MỤC
+                {
+                    cate=products[i] //danh mục thứ i
+                    tr_cate=document.createElement("tr")
+                    td_cate=document.createElement("td")
+                    td_cate.setAttribute("colspan",4)
+                    td_cate.innerHTML=cate.CateID+"-"+cate.CateName
+                    tr_cate.appendChild(td_cate)
+                    product_body.appendChild(tr_cate)
+
+                    for (j=0; j<cate.products.length; j++) //duyệt sp của danh mục
+                    {
+                        product=cate.products[j] //lấy product thứ j trong cate i
+                        tr=document.createElement("tr")
+                        td_id=document.createElement("td")
+                        td_name=document.createElement("td")
+                        td_quantity=document.createElement("td")
+                        td_price=document.createElement("td")
+
+                        td_id.innerHTML=product.ProductID
+                        td_name.innerHTML=product.ProductName
+                        td_quantity.innerHTML=product.Quantity
+                        td_price.innerHTML=product.Price
+
+                        tr.appendChild(td_id)
+                        tr.appendChild(td_name)
+                        tr.appendChild(td_quantity)
+                        tr.appendChild(td_price)
+
+                        product_body.appendChild(tr)
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
